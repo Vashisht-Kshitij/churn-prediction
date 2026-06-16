@@ -36,11 +36,28 @@ In churn prediction, identifying the actual churners is critical, so we prioriti
 
 **Selected Model:** Logistic Regression (Balanced) — It yielded the highest Recall (0.78) and a strong ROC-AUC (0.8415), meaning it is the most effective at catching customers who are actually at risk of leaving.
 
+In churn prediction, a **False Negative** (missing a real churner) is far 
+more costly than a **False Positive** (wrongly flagging a loyal customer). 
+Missing a churner means losing their revenue permanently. Wrongly flagging 
+a loyal customer only wastes one retention call. Therefore we optimized for 
+**Recall** while monitoring F1 score to maintain acceptable Precision.
+
+
+
 ## Key Findings
 - **Contract Type is Crucial:** Customers on month-to-month contracts exhibit the highest churn rates compared to those on one-year or two-year contracts.
 - **Early Attrition:** The highest risk period is early in the customer lifecycle; users with a tenure of **0 to 10 months** are the most likely to churn.
 - **Service Dependency:** Customers subscribing to Fiber Optic internet services show a significantly higher churn rate compared to DSL or no internet users.
 - **Feature Importance:** SHAP (SHapley Additive exPlanations) analysis confirmed that `tenure` is the top predictive feature driving the model's decisions, followed closely by contract type and internet service.
+
+
+## SHAP Feature Importance
+![SHAP Importance](reports/shap_importance.png)
+![SHAP Beeswarm](reports/shap_beeswarm.png)
+
+## API Interface
+![FastAPI Swagger UI](reports/api_screenshot.png)
+
 
 ## Sample API Request
 ```json
@@ -96,6 +113,7 @@ POST /predict
 
 ## Project Structure
 
+```
 churn-prediction/
 ├── data/
 │   ├── raw/          # Original dataset
