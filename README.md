@@ -60,33 +60,21 @@ a loyal customer only wastes one retention call. Therefore we optimized for
 
 
 ## Sample API Request
+
+**Request:**
 ```json
-POST /predict
 {
   "gender": 0,
   "SeniorCitizen": 1,
-  "Partner": 0,
-  "Dependents": 0,
   "tenure": 2,
-  "PhoneService": 1,
-  "MultipleLines": 0,
-  "OnlineSecurity": 0,
-  "OnlineBackup": 0,
-  "DeviceProtection": 0,
-  "TechSupport": 0,
-  "StreamingTV": 1,
-  "StreamingMovies": 1,
-  "PaperlessBilling": 1,
   "MonthlyCharges": 85.0,
   "TotalCharges": 170.0,
   "InternetService_Fiber_optic": 1,
-  "InternetService_No": 0,
   "Contract_One_year": 0,
-  "Contract_Two_year": 0,
-  "PaymentMethod_Credit_card_automatic": 0,
-  "PaymentMethod_Electronic_check": 1,
-  "PaymentMethod_Mailed_check": 0
+  "Contract_Two_year": 0
 }
+```
+
 **Response:**
 ```json
 {
@@ -94,29 +82,31 @@ POST /predict
   "churn_probability": 0.8253,
   "risk_level": "High"
 }
+```
 
 ## How to Run
 
 **1. Clone the repository**
-
-    git clone https://github.com/Vashisht-Kshitij/churn-prediction.git
-    cd churn-prediction
+```bash
+git clone https://github.com/Vashisht-Kshitij/churn-prediction.git
+cd churn-prediction
+```
 
 **2. Install dependencies**
-
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 **3. Run the API**
-
-    uvicorn src/api/main:app --reload
+```bash
+uvicorn src/api/main:app --reload
+```
 
 **4. Open the interactive API docs**
 
-    http://127.0.0.1:8000/docs
+Visit `http://127.0.0.1:8000/docs`
 
-    
 ## Project Structure
-
 ```
 churn-prediction/
 ├── data/
@@ -132,3 +122,4 @@ churn-prediction/
 ├── models/           # Saved model artifacts
 ├── reports/          # EDA and SHAP visualizations
 └── requirements.txt
+```
